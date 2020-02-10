@@ -15,6 +15,10 @@ let readIntInput (message: string) : option<int> =
 let readRow () : option<int> =
     readIntInput "Please select a row: "        
 
+let readColumn () : option<int> =
+    readIntInput "Please select a column: "
+    
+
 [<EntryPoint>]
 let main argv =
     printfn "Hello World from F#!"
