@@ -86,7 +86,22 @@ let isWinner (initialValue: char) (board: char[,]) : bool =
     let diagonalRightWinner : bool = board |> diagonalRight (0, 0) |> Seq.toList |> (allSame initialValue)
     let diagonalLeftWinner : bool = board |> diagonalLeft (0, lastColumnIndex) |> Seq.toList |> (allSame initialValue)
     rowWinner || columnWinner || diagonalRightWinner || diagonalLeftWinner
-                                        
+
+let print2D (matrix: char[,]) =
+    let lastRowIndex = Array2D.length1 matrix - 1
+    [|
+        for rowIndex = 0 to lastRowIndex do
+            let row = matrix.[rowIndex, *]
+            yield row |> Array.map (fun _ -> "-") |> String.concat "-" |> fun s -> "-" + s + "-"
+            yield row |> Array.map string |> String.concat "|" |> fun s -> "|" + s + "|"
+            if rowIndex = lastRowIndex
+            then
+                 yield row |> Array.map (fun _ -> "-") |> String.concat "-" |> fun s -> "-" + s + "-"
+            else ()      
+    |]
+    |> String.concat "\n"
+    |> printfn "%A"
+                                            
 
 [<EntryPoint>]
 let main argv =
