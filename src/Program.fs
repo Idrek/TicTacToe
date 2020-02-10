@@ -77,7 +77,16 @@ let diagonalLeft (row: int, col: int) (arr: 'a[,]) : seq<'a> =
     |> Seq.takeWhile (fun (row', col') ->
         row' >= 0 && row' < countRow && col' < countCol && col' >= 0)
     |> Seq.map (fun (row', col') -> arr.[row', col']) 
-                                    
+
+let isWinner (initialValue: char) (board: char[,]) : bool =
+    let lastColumnIndex = Array2D.length2 board - 1
+    let (rows : array<list<char>>, columns : array<list<char>>) = (rows board, columns board)
+    let rowWinner : bool = rows |> Array.exists (allSame initialValue)
+    let columnWinner : bool = columns |> Array.exists (allSame initialValue)
+    let diagonalRightWinner : bool = board |> diagonalRight (0, 0) |> Seq.toList |> (allSame initialValue)
+    let diagonalLeftWinner : bool = board |> diagonalLeft (0, lastColumnIndex) |> Seq.toList |> (allSame initialValue)
+    rowWinner || columnWinner || diagonalRightWinner || diagonalLeftWinner
+                                        
 
 [<EntryPoint>]
 let main argv =
