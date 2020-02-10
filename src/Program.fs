@@ -57,7 +57,15 @@ let diagonalLeftPath (step: int)  (x: int, y: int) : seq<int * int> =
             mutX <- mutX + step
             mutY <- mutY - step
     } 
-                            
+
+// Right diagonal: '\'
+let diagonalRight (row: int, col: int) (arr: 'a[,]) : seq<'a> =
+    let countRow = Array2D.length1 arr 
+    let countCol = Array2D.length2 arr
+    diagonalRightPath 1 (row, col) 
+    |> Seq.takeWhile (fun (row', col') -> row' < countRow && col' < countCol)
+    |> Seq.map (fun (row', col') -> arr.[row', col'])
+                                
 
 [<EntryPoint>]
 let main argv =
