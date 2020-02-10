@@ -150,5 +150,5 @@ let ticTacToe () =
 
 [<EntryPoint>]
 let main argv =
-    printfn "Hello World from F#!"
+    ticTacToe()
     0 // return an integer exit code
