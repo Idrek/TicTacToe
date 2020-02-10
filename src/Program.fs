@@ -113,7 +113,10 @@ let exists (f: 'a -> bool) (arr: 'a[,]) : bool =
             then true
             else exists' (row + 1)
     exists' 0
-    
+
+let isFull (initialValue: char) (board: char[,]) : bool =
+    not <| exists (fun cell -> cell = initialValue) board
+        
 
 
 [<EntryPoint>]
