@@ -65,7 +65,19 @@ let diagonalRight (row: int, col: int) (arr: 'a[,]) : seq<'a> =
     diagonalRightPath 1 (row, col) 
     |> Seq.takeWhile (fun (row', col') -> row' < countRow && col' < countCol)
     |> Seq.map (fun (row', col') -> arr.[row', col'])
-                                
+
+// Left diagonal: '/'
+let diagonalLeft (row: int, col: int) (arr: 'a[,]) : seq<'a> =
+    let countRow = Array2D.length1 arr
+    let countCol = Array2D.length2 arr
+    diagonalLeftPath 1 (row, col)
+    |> Seq.filter (fun (row', col') -> 
+        (row' >= 0 && row' < countRow && col' < countCol && col' >= 0) ||
+            ((row' < 0 || row' >= countRow) && (col' < 0 || col' >= countCol)))
+    |> Seq.takeWhile (fun (row', col') ->
+        row' >= 0 && row' < countRow && col' < countCol && col' >= 0)
+    |> Seq.map (fun (row', col') -> arr.[row', col']) 
+                                    
 
 [<EntryPoint>]
 let main argv =
