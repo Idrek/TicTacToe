@@ -12,6 +12,9 @@ let readIntInput (message: string) : option<int> =
     with
         | ex -> None
 
+let readRow () : option<int> =
+    readIntInput "Please select a row: "        
+
 [<EntryPoint>]
 let main argv =
     printfn "Hello World from F#!"
