@@ -46,7 +46,18 @@ let diagonalRightPath (step: int) (x: int, y: int) : seq<int * int> =
             mutX <- mutX + step
             mutY <- mutY + step
     }
-                        
+
+// Left direction of diagonal, like '/' where `x` is incremented but `y` is decremented.
+let diagonalLeftPath (step: int)  (x: int, y: int) : seq<int * int> =
+    let mutable mutX = x % step
+    let mutable mutY = y + x - mutX
+    seq {
+        while true do
+            yield (mutX, mutY)
+            mutX <- mutX + step
+            mutY <- mutY - step
+    } 
+                            
 
 [<EntryPoint>]
 let main argv =
