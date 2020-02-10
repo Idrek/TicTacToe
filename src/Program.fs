@@ -17,7 +17,10 @@ let readRow () : option<int> =
 
 let readColumn () : option<int> =
     readIntInput "Please select a column: "
-    
+
+let board (initialValue: char) (size: int) : char[,] =
+    Array2D.create size size initialValue
+        
 
 [<EntryPoint>]
 let main argv =
