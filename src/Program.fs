@@ -116,7 +116,36 @@ let exists (f: 'a -> bool) (arr: 'a[,]) : bool =
 
 let isFull (initialValue: char) (board: char[,]) : bool =
     not <| exists (fun cell -> cell = initialValue) board
-        
+
+let ticTacToe () =
+    let initialValue : char = ' '
+    let size : int = 3
+    let board : char[,] = board initialValue size
+    let rec loop (board: char[,]) turn = 
+        print2D board
+        let winner : bool = isWinner initialValue board
+        let full : bool = isFull initialValue board
+        match winner, full with
+        | true, _ -> printfn "%s wins!" <| if turn = 0 then "X" else "O"
+        | _, true -> printfn "Draw"
+        | _ ->
+            printfn "%ss turn:" <| if turn = 0 then "O" else "X"
+            let row : option<int> = readRow()
+            let column : option<int> = readColumn()
+            match row, column with
+            | Some r, Some c when r >= 0 && r < size && c >= 0 && c < size ->
+                if board.[r, c] <> initialValue
+                then
+                    printfn "That space has already been taken"
+                    loop board turn
+                else
+                    board.[r, c] <- if turn = 0 then 'O' else 'X'
+                    loop board -(turn - 1)
+            | _ -> 
+                printfn "Invalid pair of row and column"
+                loop board turn
+    loop board 0        
+
 
 
 [<EntryPoint>]
