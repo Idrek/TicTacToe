@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TicTacToe", "src\TicTacToe.fsproj", "{5CEFC7EF-3DFE-4610-BFA8-483A203BABE2}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TicTacToeTest", "test\TicTacToeTest.fsproj", "{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{5CEFC7EF-3DFE-4610-BFA8-483A203BABE2}.Release|x64.Build.0 = Release|Any CPU
 		{5CEFC7EF-3DFE-4610-BFA8-483A203BABE2}.Release|x86.ActiveCfg = Release|Any CPU
 		{5CEFC7EF-3DFE-4610-BFA8-483A203BABE2}.Release|x86.Build.0 = Release|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Debug|x64.Build.0 = Debug|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Debug|x86.Build.0 = Debug|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Release|x64.ActiveCfg = Release|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Release|x64.Build.0 = Release|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Release|x86.ActiveCfg = Release|Any CPU
+		{7205A4B7-F8AF-4A71-AEF5-96A2A97D2839}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
