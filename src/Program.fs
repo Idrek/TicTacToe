@@ -1,6 +1,16 @@
-﻿// Learn more about F# at http://fsharp.org
+﻿module TicTacToe.App
 
-open System
+type Console = System.Console
+type Int32 = System.Int32
+
+let readIntInput (message: string) : option<int> =
+    try
+        printf "%s" message
+        let input : int = Int32.Parse(Console.ReadKey().KeyChar.ToString())
+        printfn ""
+        Some input
+    with
+        | ex -> None
 
 [<EntryPoint>]
 let main argv =
