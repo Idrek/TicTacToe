@@ -101,7 +101,20 @@ let print2D (matrix: char[,]) =
     |]
     |> String.concat "\n"
     |> printfn "%A"
-                                            
+
+let exists (f: 'a -> bool) (arr: 'a[,]) : bool =
+    let count1 = Array2D.length1 arr 
+    let b1 = Array2D.base1 arr 
+    let rec exists' row =
+        match row with
+        | row' when row' > b1 + count1 - 1 -> false
+        | row' ->
+            if Array.exists f arr.[row',*]
+            then true
+            else exists' (row + 1)
+    exists' 0
+    
+
 
 [<EntryPoint>]
 let main argv =
