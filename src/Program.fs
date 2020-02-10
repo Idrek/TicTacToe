@@ -20,7 +20,11 @@ let readColumn () : option<int> =
 
 let board (initialValue: char) (size: int) : char[,] =
     Array2D.create size size initialValue
-        
+
+let rows (matrix: 'a[,]) : array<list<'a>> =
+    let lastRowIndex = Array2D.length1 matrix - 1
+    [| for rowIndex in 0 .. lastRowIndex do yield matrix.[rowIndex, *] |> Array.toList |]
+            
 
 [<EntryPoint>]
 let main argv =
