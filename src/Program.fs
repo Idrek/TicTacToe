@@ -34,7 +34,19 @@ let allSame (initialValue: 'a) (coll: list<'a>) =
     | [] | [_] -> true
     | x::lx when lx |> List.forall ((=) x) && x <> initialValue -> true
     | _ -> false
-                    
+
+// Right direction of diagonal, like '\' where either `x` and `y` are incremented.
+let diagonalRightPath (step: int) (x: int, y: int) : seq<int * int> =
+    let minValue = min (x / step) (y / step)
+    let mutable mutX = x - (minValue * step)
+    let mutable mutY = y - (minValue * step)
+    seq {
+        while true do
+            yield (mutX, mutY)
+            mutX <- mutX + step
+            mutY <- mutY + step
+    }
+                        
 
 [<EntryPoint>]
 let main argv =
