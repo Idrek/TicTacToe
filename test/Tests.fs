@@ -57,3 +57,35 @@ let ``Test of isWinner function`` () =
             [|'x';' ';'o'|]
         |] |> array2D
     Assert.Equal(true, isWinner initialValue board)
+
+// ---------------------------------
+// isFull
+// ---------------------------------
+
+[<Fact>]
+let ``Test of isFull function`` () =
+    let initialValue : char = ' '
+    let board : char[,] = 
+        [|
+            [|' ';' ';' '|]
+            [|' ';' ';' '|]
+            [|' ';' ';' '|]
+        |] |> array2D
+    Assert.Equal(false, isFull initialValue board)
+
+    let board : char[,] = 
+        [|
+            [|'x';' ';' '|]
+            [|' ';'x';' '|]
+            [|' ';' ';'x'|]
+        |] |> array2D
+    Assert.Equal(false, isFull initialValue board)
+
+    let board : char[,] = 
+        [|
+            [|'x';'x';'o'|]
+            [|'o';'x';'x'|]
+            [|'x';'o';'o'|]
+        |] |> array2D
+    Assert.Equal(true, isFull initialValue board)
+    
