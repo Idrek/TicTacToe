@@ -89,14 +89,17 @@ let isWinner (initialValue: char) (board: char[,]) : bool =
 
 let print2D (matrix: char[,]) =
     let lastRowIndex = Array2D.length1 matrix - 1
+    let border (row: array<char>) : string = 
+        row |> Array.map (fun _ -> "-") |> String.concat "-" |> fun s -> "-" + s + "-"
+    let cells (row: array<char>) : string = 
+        row |> Array.map string |> String.concat "|" |> fun s -> "|" + s + "|"
     [|
         for rowIndex = 0 to lastRowIndex do
             let row = matrix.[rowIndex, *]
-            yield row |> Array.map (fun _ -> "-") |> String.concat "-" |> fun s -> "-" + s + "-"
-            yield row |> Array.map string |> String.concat "|" |> fun s -> "|" + s + "|"
+            yield border row
+            yield cells row
             if rowIndex = lastRowIndex
-            then
-                 yield row |> Array.map (fun _ -> "-") |> String.concat "-" |> fun s -> "-" + s + "-"
+            then yield border row
             else ()      
     |]
     |> String.concat "\n"
