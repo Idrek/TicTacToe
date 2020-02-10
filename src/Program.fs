@@ -28,7 +28,13 @@ let rows (matrix: 'a[,]) : array<list<'a>> =
 let columns (matrix: 'a[,]) : array<list<'a>> =
     let lastColumnIndex = Array2D.length2 matrix - 1
     [| for columnIndex in 0 .. lastColumnIndex do yield matrix.[*, columnIndex] |> Array.toList |]
-                
+
+let allSame (initialValue: 'a) (coll: list<'a>) =
+    match coll with
+    | [] | [_] -> true
+    | x::lx when lx |> List.forall ((=) x) && x <> initialValue -> true
+    | _ -> false
+                    
 
 [<EntryPoint>]
 let main argv =
