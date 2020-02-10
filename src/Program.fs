@@ -24,7 +24,11 @@ let board (initialValue: char) (size: int) : char[,] =
 let rows (matrix: 'a[,]) : array<list<'a>> =
     let lastRowIndex = Array2D.length1 matrix - 1
     [| for rowIndex in 0 .. lastRowIndex do yield matrix.[rowIndex, *] |> Array.toList |]
-            
+
+let columns (matrix: 'a[,]) : array<list<'a>> =
+    let lastColumnIndex = Array2D.length2 matrix - 1
+    [| for columnIndex in 0 .. lastColumnIndex do yield matrix.[*, columnIndex] |> Array.toList |]
+                
 
 [<EntryPoint>]
 let main argv =
